@@ -130,9 +130,9 @@ def main():
     import pandas as pd
 
     test_labels = to_binary_labels(pd.read_csv(data_dir / "test.csv")["label"]).astype("int32")
-    mlflow.set_experiment(config["mlflow_experiment"])
     if os.getenv("MLFLOW_TRACKING_URI"):
         mlflow.set_tracking_uri(os.environ["MLFLOW_TRACKING_URI"])
+    mlflow.set_experiment(config["mlflow_experiment"])
     train_one("baseline_cnn", baseline_model(config["image_size"]), train, validation, test, test_labels, config, model_dir)
     transfer, base = transfer_model(config["image_size"], config["learning_rate"])
     train_one("mobilenetv2_head", transfer, train, validation, test, test_labels, config, model_dir)
