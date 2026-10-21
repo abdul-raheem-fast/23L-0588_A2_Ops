@@ -9,6 +9,16 @@
       "file": "02_colab_secrets_panel.png",
       "subtasks": ["3.2"],
       "description": "Google Colab Secrets panel before credentials are entered; use only as setup evidence."
+    },
+    {
+      "file": "10_github_ci_failed.png",
+      "subtasks": ["6.6"],
+      "description": "GitHub Actions failed workflow notification; retain as the intentional red-run evidence."
+    },
+    {
+      "file": "11_colab_install_progress.png",
+      "subtasks": ["1.1"],
+      "description": "Colab dependency installation in progress; no failure is visible in this screenshot."
     }
   ]
 }
