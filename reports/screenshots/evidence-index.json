@@ -3,27 +3,52 @@
     {
       "file": "01_colab_runtime_t4.png",
       "subtasks": ["1.1"],
-      "description": "Google Colab runtime configuration with T4 GPU selected."
+      "description": "Colab runtime configuration with a T4 GPU selected."
     },
     {
       "file": "02_colab_secrets_panel.png",
       "subtasks": ["3.2"],
-      "description": "Google Colab Secrets panel before credentials are entered; use only as setup evidence."
+      "description": "Colab Secrets setup panel for DagsHub credentials."
     },
     {
       "file": "10_github_ci_failed.png",
       "subtasks": ["6.6"],
-      "description": "GitHub Actions failed workflow notification; retain as the intentional red-run evidence."
+      "description": "Intentional red GitHub Actions run retained for CI lab evidence."
     },
     {
-      "file": "13_colab_training_run.png",
-      "subtasks": ["2.4", "3.3"],
-      "description": "Colab training output showing a VisionGuard model run and epoch metrics."
+      "file": "15_colab_environment_gpu.png",
+      "subtasks": ["1.1"],
+      "description": "Colab environment output showing TensorFlow and GPU detection."
     },
     {
-      "file": "14_dagshub_mlflow_runs.png",
+      "file": "16_dataset_download_counts.png",
+      "subtasks": ["1.2"],
+      "description": "Official dataset download path and class file counts."
+    },
+    {
+      "file": "17_dataset_audit_splits.png",
+      "subtasks": ["1.2", "2.1"],
+      "description": "Audit count and reproducible train/validation/test split creation."
+    },
+    {
+      "file": "18_dagshub_mlflow_configuration.png",
+      "subtasks": ["3.2"],
+      "description": "DagsHub MLflow tracking configuration with the token hidden."
+    },
+    {
+      "file": "19_baseline_training_result.png",
+      "subtasks": ["2.2", "2.4", "2.5", "3.3"],
+      "description": "Baseline CNN training output and evaluation metrics."
+    },
+    {
+      "file": "20_dagshub_final_runs.png",
       "subtasks": ["3.3", "3.5"],
-      "description": "DagsHub MLflow VisionGuard experiment run list."
+      "description": "DagsHub MLflow experiment list showing completed VisionGuard runs."
+    },
+    {
+      "file": "21_finetuned_training_result.png",
+      "subtasks": ["2.3", "2.4", "2.5", "3.3"],
+      "description": "MobileNetV2 fine-tuning output and evaluation metrics."
     }
   ]
 }
