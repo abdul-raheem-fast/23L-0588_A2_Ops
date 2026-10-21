@@ -1,0 +1,19 @@
+:root { color-scheme: light; font-family: Georgia, serif; color: #20252b; background: #f3f0e9; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.site-header { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem max(1.5rem, calc((100% - 960px) / 2)); background: #172b3a; color: white; }
+.site-header a { color: inherit; text-decoration: none; font-weight: bold; }
+nav { display: flex; gap: 1rem; font-family: Arial, sans-serif; font-size: .9rem; }
+.container { max-width: 960px; margin: 4rem auto; padding: 0 1.5rem; }
+.card { background: white; padding: clamp(1.5rem, 5vw, 4rem); border: 1px solid #d7d0c3; box-shadow: 0 8px 30px #172b3a12; }
+.eyebrow { color: #9b4d2d; font: bold .75rem Arial, sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+h1 { font-size: clamp(2rem, 6vw, 4rem); line-height: 1; margin: .5rem 0 1.5rem; }
+form { display: grid; gap: .8rem; max-width: 34rem; margin-top: 2rem; font-family: Arial, sans-serif; }
+input, button, .button { font: inherit; padding: .8rem 1rem; }
+button, .button { background: #9b4d2d; color: white; border: 0; cursor: pointer; text-decoration: none; display: inline-block; width: fit-content; }
+.notice { padding: 1rem; margin-bottom: 1rem; font-family: Arial, sans-serif; }
+.notice.error { background: #f7ded8; color: #702619; }
+.notice.success { background: #dcebdc; }
+.caveat { border-left: 3px solid #9b4d2d; padding-left: 1rem; }
+.table-wrap { overflow-x: auto; } table { border-collapse: collapse; width: 100%; font: .9rem Arial, sans-serif; } th, td { text-align: left; padding: .8rem; border-bottom: 1px solid #ddd; }
+

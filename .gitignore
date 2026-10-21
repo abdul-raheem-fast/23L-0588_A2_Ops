@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.pytest_cache/
+.mypy_cache/
+mlruns/
+data/raw/
+data/processed/
+data/*.db
+artifacts/
+models/*.keras
+models/*.h5
+inference-service/models/*.keras
+*.log

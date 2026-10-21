@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <p class="eyebrow">Request trail</p>
+  <h1>Recent predictions</h1>
+  {% if predictions %}
+  <div class="table-wrap"><table><thead><tr><th>Time</th><th>File</th><th>Decision</th><th>Confidence</th><th>Model</th></tr></thead>
+  <tbody>{% for prediction in predictions %}<tr><td>{{ prediction.created_at }}</td><td>{{ prediction.filename }}</td><td>{{ prediction.label }}</td><td>{{ "%.1f"|format(prediction.confidence * 100) }}%</td><td>{{ prediction.model_name }} v{{ prediction.model_version }}</td></tr>{% endfor %}</tbody></table></div>
+  {% else %}<p>No predictions have been recorded.</p>{% endif %}
+</section>
+{% endblock %}
+

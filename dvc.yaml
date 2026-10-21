@@ -1,0 +1,19 @@
+stages:
+  audit:
+    cmd: python scripts/audit_dataset.py --dataset-dir ${DATASET_DIR} --output-dir artifacts/audit
+    deps:
+      - scripts/audit_dataset.py
+      - ${DATASET_DIR}
+    outs:
+      - artifacts/audit/image_audit.csv
+      - artifacts/audit/summary.json
+  splits:
+    cmd: python scripts/make_splits.py --dataset-dir ${DATASET_DIR} --output-dir artifacts/splits --seed 23
+    deps:
+      - scripts/make_splits.py
+      - ${DATASET_DIR}
+    outs:
+      - artifacts/splits/train.csv
+      - artifacts/splits/validation.csv
+      - artifacts/splits/test.csv
+

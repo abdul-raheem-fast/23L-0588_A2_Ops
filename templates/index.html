@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <p class="eyebrow">Image authenticity check</p>
+  <h1>Is this image AI-generated?</h1>
+  <p>Upload a JPG, PNG, or WEBP image. The result is a model estimate, not proof of origin.</p>
+  {% if model_error %}<div class="notice error">Model unavailable: {{ model_error }}</div>{% endif %}
+  <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+    <label for="image">Image file</label>
+    <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.webp" required>
+    <button type="submit">Analyze image</button>
+  </form>
+</section>
+{% endblock %}
+

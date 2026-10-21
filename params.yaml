@@ -1,0 +1,6 @@
+DATASET_DIR: data/raw
+image_size: 224
+batch_size: 32
+epochs: 20
+seed: 23
+learning_rate: 0.0001

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card result">
+  <p class="eyebrow">Prediction complete</p>
+  <h1>{{ label }}</h1>
+  <p>{{ filename }} was classified with <strong>{{ confidence }}</strong> confidence.</p>
+  <p class="caveat">This classifier can be wrong, especially for edited, compressed, painted, or unfamiliar images.</p>
+  <a class="button" href="{{ url_for('index') }}">Analyze another image</a>
+</section>
+{% endblock %}
+
