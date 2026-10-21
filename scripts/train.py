@@ -11,6 +11,13 @@ import tensorflow as tf
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score
 
 
+def to_binary_labels(labels):
+    return np.asarray(
+        [1.0 if str(label).strip().lower() in {"aiartdata", "ai-generated", "ai_generated"} else 0.0 for label in labels],
+        dtype="float32",
+    )
+
+
 def set_seed(seed):
     random.seed(seed)
     np.random.seed(seed)
@@ -21,7 +28,7 @@ def dataset_from_csv(csv_path, image_size, batch_size, training):
     import pandas as pd
 
     frame = pd.read_csv(csv_path)
-    labels = (frame["label"] == "AI-generated").astype("float32").to_numpy()
+    labels = to_binary_labels(frame["label"])
     paths = frame["path"].to_numpy()
     dataset = tf.data.Dataset.from_tensor_slices((paths, labels))
 
@@ -122,7 +129,7 @@ def main():
     test = dataset_from_csv(data_dir / "test.csv", config["image_size"], config["batch_size"], False)
     import pandas as pd
 
-    test_labels = (pd.read_csv(data_dir / "test.csv")["label"] == "AI-generated").astype("int32").to_numpy()
+    test_labels = to_binary_labels(pd.read_csv(data_dir / "test.csv")["label"]).astype("int32")
     mlflow.set_experiment(config["mlflow_experiment"])
     if os.getenv("MLFLOW_TRACKING_URI"):
         mlflow.set_tracking_uri(os.environ["MLFLOW_TRACKING_URI"])
@@ -138,4 +145,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
