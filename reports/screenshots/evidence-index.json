@@ -14,6 +14,16 @@
       "file": "10_github_ci_failed.png",
       "subtasks": ["6.6"],
       "description": "GitHub Actions failed workflow notification; retain as the intentional red-run evidence."
+    },
+    {
+      "file": "13_colab_training_run.png",
+      "subtasks": ["2.4", "3.3"],
+      "description": "Colab training output showing a VisionGuard model run and epoch metrics."
+    },
+    {
+      "file": "14_dagshub_mlflow_runs.png",
+      "subtasks": ["3.3", "3.5"],
+      "description": "DagsHub MLflow VisionGuard experiment run list."
     }
   ]
 }
