@@ -1,0 +1,14 @@
+{
+  "screenshots": [
+    {
+      "file": "01_colab_runtime_t4.png",
+      "subtasks": ["1.1"],
+      "description": "Google Colab runtime configuration with T4 GPU selected."
+    },
+    {
+      "file": "02_colab_secrets_panel.png",
+      "subtasks": ["3.2"],
+      "description": "Google Colab Secrets panel before credentials are entered; use only as setup evidence."
+    }
+  ]
+}
