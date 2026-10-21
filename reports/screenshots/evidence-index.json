@@ -19,6 +19,11 @@
       "file": "11_colab_install_progress.png",
       "subtasks": ["1.1"],
       "description": "Colab dependency installation in progress; no failure is visible in this screenshot."
+    },
+    {
+      "file": "12_colab_mlflow_missing.png",
+      "subtasks": ["3.2"],
+      "description": "Colab tracking cell failed because MLflow was not installed; retained as troubleshooting evidence."
     }
   ]
 }
