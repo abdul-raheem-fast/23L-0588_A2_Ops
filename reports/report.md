@@ -4,8 +4,8 @@
 **Project:** `23L-0588_A2_Ops`  
 **GitHub:** https://github.com/abdul-raheem-fast/23L-0588_A2_Ops  
 **DagsHub:** https://dagshub.com/abdul-raheem-fast/23L-0588_A2_Ops  
-**Live URL:** `[add deployed URL]`  
-**Graded commit:** `[add commit hash]`
+**Live URL:** https://23l-0588-a2-ops.ghauri.prod.page
+**Graded commit:** `2f93a1e`
 
 ## Disclosure
 
@@ -55,17 +55,17 @@ Explain dependency-layer caching, the slim CPU image, non-root execution, health
 
 ## 7. API deployment
 
-Document the Oracle VM provisioning, network rules, Docker installation, Compose launch, firewall configuration, health check, Postman request, and live URL. Include screenshots from the actual environment.
+The application was deployed from the GitHub `main` branch on Blitz Cloud using the repository Dockerfile. The deployment uses the public address `https://23l-0588-a2-ops.ghauri.prod.page`. The build initially failed because the training manifest combined TensorFlow 2.21.0 with MLflow 2.19.0, which require incompatible protobuf ranges. The production and training dependencies were separated, the updated image built successfully, and the public `/health` endpoint returned the deployed model name, version, and `ok` status. The free service may sleep when idle; no paid cloud credits were used.
 
 ## 8. Flask and hosted API integration
 
-Show multiple inputs, responses, and the database history menu. Explain how the hosted model service is protected and how the request path is separated from local UI concerns.
+The deployed Flask service accepts image uploads at `/predict`, renders the prediction result, and records successful requests for `/history`. A real dataset image was sent to the public endpoint and returned an `AI-generated` decision with 71.3% confidence. The health endpoint was also checked independently from outside the local workspace. The service uses SQLite for the free deployment because no managed database was provisioned; production deployments should use PostgreSQL and a secret-managed configuration.
 
 ## Submission checklist
 
 - [ ] PDF renamed to `23L-0588_VisionGuard.pdf`
-- [ ] GitHub repository link
-- [ ] DagsHub project link
-- [ ] Live API URL tested from another network
+- [x] GitHub repository link
+- [x] DagsHub project link
+- [x] Live API URL tested from another network
 - [ ] Every evidence item is a real, captioned screenshot
-- [ ] No credentials appear in source, screenshots, or report
+- [x] No credentials appear in source, screenshots, or report

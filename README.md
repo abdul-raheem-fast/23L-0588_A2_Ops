@@ -9,6 +9,7 @@ VisionGuard is an image-classification service that estimates whether an uploade
 - [GitHub repository](https://github.com/abdul-raheem-fast/23L-0588_A2_Ops)
 - [DagsHub repository and MLflow](https://dagshub.com/abdul-raheem-fast/23L-0588_A2_Ops)
 - [Hugging Face inference Space](https://huggingface.co/spaces/ghaurixd/visionguard-inference)
+- [Live Blitz deployment](https://23l-0588-a2-ops.ghauri.prod.page)
 
 ## Architecture
 
@@ -138,6 +139,18 @@ docker compose up --build
 
 The web service is published on port `8000`. PostgreSQL is available only inside the Compose network and uses a named volume.
 
+## Deployment
+
+The full Flask application is deployed on Blitz Cloud from the GitHub `main` branch:
+
+```text
+https://23l-0588-a2-ops.ghauri.prod.page
+```
+
+The service exposes `/health`, `/predict`, and `/history`. The free plan may sleep after inactivity. Training and MLflow dependencies are kept in `requirements-training.txt`; the production image installs only the serving dependencies.
+
+The separate Hugging Face Space remains available as an inference-service deployment attempt, but its free CPU runtime is paused by account quota.
+
 ## Hugging Face inference service
 
 The Docker Space uses:
@@ -165,4 +178,4 @@ Raw images, model binaries, ZIP archives, `.env`, tokens, and generated local da
 
 ## Report
 
-The report source is [reports/report.md](reports/report.md). Selected evidence screenshots are indexed in [reports/screenshots/evidence-index.json](reports/screenshots/evidence-index.json). Replace report placeholders with the final live URL, model registry details, evaluation figures, and deployment screenshots before exporting `23L-0588_VisionGuard.pdf`.
+The report source is [reports/report.md](reports/report.md). Selected evidence screenshots are indexed in [reports/screenshots/evidence-index.json](reports/screenshots/evidence-index.json). Add any remaining rubric figures and screenshots before exporting `23L-0588_VisionGuard.pdf`.

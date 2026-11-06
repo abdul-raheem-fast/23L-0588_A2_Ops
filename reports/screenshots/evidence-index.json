@@ -49,6 +49,26 @@
       "file": "21_finetuned_training_result.png",
       "subtasks": ["2.3", "2.4", "2.5", "3.3"],
       "description": "MobileNetV2 fine-tuning output and evaluation metrics."
+    },
+    {
+      "file": "22_huggingface_space_files.png",
+      "subtasks": ["5.3"],
+      "description": "Hugging Face Space file listing captured while diagnosing the deployment layout."
+    },
+    {
+      "file": "23_google_cloud_trial_pending.png",
+      "subtasks": ["5.3"],
+      "description": "Google Cloud free trial pending because prepayment verification was required."
+    },
+    {
+      "file": "24_blitz_dashboard_online.png",
+      "subtasks": ["7.1", "7.2"],
+      "description": "Blitz Cloud dashboard showing the deployed application online with its public address."
+    },
+    {
+      "file": "25_blitz_public_ui.png",
+      "subtasks": ["7.2", "8.1"],
+      "description": "Public Blitz URL displaying the VisionGuard upload interface."
     }
   ]
 }
