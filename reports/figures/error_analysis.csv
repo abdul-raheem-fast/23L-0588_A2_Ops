@@ -1,0 +1,11 @@
+path,true_label,predicted_label,probability_ai
+/content/dataset/AiArtData/AiArtData/midjourney_v5_hero_2-800x450.jpg,1,0,0.07613891
+/content/dataset/AiArtData/AiArtData/midjourney-putin.jpg,1,0,0.14945284
+/content/dataset/AiArtData/AiArtData/6324662e5ee3110438933c1b_COBE-Pink-Elephant-Midjourney-Article.jpg,1,0,0.2737749
+/content/dataset/AiArtData/AiArtData/alice.png,1,0,0.070307136
+/content/dataset/AiArtData/AiArtData/71f09875-ca8e-40e1-b99e-c70a0d3cc063-large16x9_NorthDakota.jpeg,1,0,0.3755694
+/content/dataset/AiArtData/AiArtData/robot-monitoring-dairy-farm-1200x800-1.jpg,1,0,0.36222303
+/content/dataset/AiArtData/AiArtData/robot-art-for-web-1180x560.jpg,1,0,0.25061277
+/content/dataset/AiArtData/AiArtData/Blogs.jpg,1,0,0.48895177
+/content/dataset/RealArt/RealArt/20200204-Influential-51_camera-press.jpg,0,1,0.70313764
+/content/dataset/AiArtData/AiArtData/AI_art_1685017093404_1685017098933.jpeg,1,0,0.4629275

@@ -5,7 +5,7 @@
 **GitHub:** https://github.com/abdul-raheem-fast/23L-0588_A2_Ops  
 **DagsHub:** https://dagshub.com/abdul-raheem-fast/23L-0588_A2_Ops  
 **Live URL:** https://23l-0588-a2-ops.ghauri.prod.page
-**Graded commit:** `2f93a1e`
+**Graded commit:** `fbbb671`
 
 ## Disclosure
 
@@ -31,17 +31,17 @@ The audited metadata was used to generate [dataset_eda.svg](figures/dataset_eda.
 
 ### 1.4 DVC
 
-Document the toy CSV history, pointer contents, remote push/pull, and the dataset-folder application. Include actual commit and terminal screenshots.
+The repository includes the DVC pipeline configuration in `dvc.yaml` and `params.yaml`. A separate authenticated DVC push/pull screenshot was not captured.
 
 ## 2. Model development
 
 The `tf.data` pipeline reads the reproducible split CSVs, converts images to RGB, resizes them to 224×224, and batches them for training. The baseline CNN was compared with a MobileNetV2 transfer-learning head and a final fine-tuning run. Early stopping, checkpointing, and learning-rate reduction were used to limit overfitting.
 
-The executed Colab run selected the fine-tuned MobileNetV2 model. Its recorded test metrics are in [champion_metrics.json](figures/champion_metrics.json): accuracy 0.7449, precision 0.8718, recall 0.6296, F1 0.7312, and ROC-AUC 0.8695. The precision/recall difference indicates that the selected threshold favours fewer false AI-generated predictions at the cost of missed positives. A confusion-matrix, ROC plot, and error-analysis grid were not exported by the executed notebook and are therefore not claimed as completed evidence.
+The executed Colab run selected the fine-tuned MobileNetV2 model. Its recorded test metrics are in [champion_metrics.json](figures/champion_metrics.json): accuracy 0.7449, precision 0.8718, recall 0.6296, F1 0.7312, and ROC-AUC 0.8695. The precision/recall difference indicates that the selected threshold favours fewer false AI-generated predictions at the cost of missed positives. The evidence notebook generated [confusion_matrix.png](figures/confusion_matrix.png), [roc_curve.png](figures/roc_curve.png), [error_analysis_grid.png](figures/error_analysis_grid.png), and [error_analysis.csv](figures/error_analysis.csv).
 
 ## 3. MLflow and DagsHub
 
-MLflow tracking was configured against DagsHub and the executed run recorded the baseline and MobileNetV2 experiments. The retained screenshots show the tracking configuration, completed runs, and final training output. The notebook did not export independent model-registry version and alias evidence, so those items are not represented as completed.
+MLflow tracking was configured against DagsHub and the executed run recorded the baseline and MobileNetV2 experiments. The retained screenshots show the tracking configuration, completed runs, and final training output. Independent model-registry version and alias evidence was not captured.
 
 ## 4. Flask application
 
@@ -65,7 +65,7 @@ The deployed Flask service accepts image uploads at `/predict`, renders the pred
 
 ## Submission checklist
 
-- [ ] PDF renamed to `23L-0588_VisionGuard.pdf`
+- [x] PDF renamed to `23L-0588_VisionGuard.pdf`
 - [x] GitHub repository link
 - [x] DagsHub project link
 - [x] Live API URL tested from another network
