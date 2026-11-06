@@ -108,6 +108,8 @@ Never place tokens in notebook cells, source files, screenshots, or commits.
 
 ## Run the Flask application
 
+The production image installs only the serving dependencies from `requirements.txt`. Training, evaluation, and CI tools are listed separately in `requirements-training.txt`.
+
 ```powershell
 python -m app
 ```
