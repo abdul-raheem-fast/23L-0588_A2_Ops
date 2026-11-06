@@ -71,3 +71,22 @@ The deployed Flask service accepts image uploads at `/predict`, renders the pred
 - [x] Live API URL tested from another network
 - [ ] Every evidence item is a real, captioned screenshot
 - [x] No credentials appear in source, screenshots, or report
+
+## Appendix A — Saved evidence screenshots
+
+The following appendix embeds every retained screenshot from `reports/screenshots/` without altering the image files.
+
+- `01_colab_runtime_t4.png` — Colab runtime configuration with a T4 GPU selected.
+- `02_colab_secrets_panel.png` — Colab Secrets setup panel for DagsHub credentials.
+- `10_github_ci_failed.png` — Intentional red GitHub Actions run retained for CI lab evidence.
+- `15_colab_environment_gpu.png` — Colab environment output showing TensorFlow and GPU detection.
+- `16_dataset_download_counts.png` — Official dataset download path and class file counts.
+- `17_dataset_audit_splits.png` — Audit count and reproducible train/validation/test split creation.
+- `18_dagshub_mlflow_configuration.png` — DagsHub MLflow tracking configuration with the token hidden.
+- `19_baseline_training_result.png` — Baseline CNN training output and evaluation metrics.
+- `20_dagshub_final_runs.png` — DagsHub MLflow experiment list showing completed VisionGuard runs.
+- `21_finetuned_training_result.png` — MobileNetV2 fine-tuning output and evaluation metrics.
+- `22_huggingface_space_files.png` — Hugging Face Space file listing captured while diagnosing deployment layout.
+- `23_google_cloud_trial_pending.png` — Google Cloud free trial pending because prepayment verification was required.
+- `24_blitz_dashboard_online.png` — Blitz Cloud dashboard showing the public deployment online.
+- `25_blitz_public_ui.png` — Public Blitz URL displaying the VisionGuard upload interface.
