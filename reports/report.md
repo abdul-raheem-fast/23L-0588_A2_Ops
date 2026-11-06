@@ -27,7 +27,7 @@ The Colab run audited 975 images: 539 from `AiArtData`, 436 from `RealArt`, no c
 
 ### 1.3 Visual EDA
 
-Insert the sample grid and class-separated width, height, and file-size histograms. Explain the visible differences and limitations in two or three sentences per figure.
+The audited metadata was used to generate [dataset_eda.svg](figures/dataset_eda.svg). The sample grid shows the two source classes and the width/height distributions show substantial variation, including very large source images. The distributions describe the collected files rather than image semantics, so they should not be interpreted as proof that a visual feature is unique to either class.
 
 ### 1.4 DVC
 
@@ -35,11 +35,13 @@ Document the toy CSV history, pointer contents, remote push/pull, and the datase
 
 ## 2. Model development
 
-Explain the `tf.data` pipeline, aspect-ratio decision, baseline CNN, MobileNetV2 head training, last-block fine-tuning, callbacks, threshold selection, evaluation metrics, ROC/confusion matrix, misclassifications, and Keras Tuner results. Insert the generated figures with captions.
+The `tf.data` pipeline reads the reproducible split CSVs, converts images to RGB, resizes them to 224×224, and batches them for training. The baseline CNN was compared with a MobileNetV2 transfer-learning head and a final fine-tuning run. Early stopping, checkpointing, and learning-rate reduction were used to limit overfitting.
+
+The executed Colab run selected the fine-tuned MobileNetV2 model. Its recorded test metrics are in [champion_metrics.json](figures/champion_metrics.json): accuracy 0.7449, precision 0.8718, recall 0.6296, F1 0.7312, and ROC-AUC 0.8695. The precision/recall difference indicates that the selected threshold favours fewer false AI-generated predictions at the cost of missed positives. A confusion-matrix, ROC plot, and error-analysis grid were not exported by the executed notebook and are therefore not claimed as completed evidence.
 
 ## 3. MLflow and DagsHub
 
-Define experiment, run, parameter, metric, artifact, and tag in your own words. Include local toy runs, DagsHub tracking evidence, manual and autologging runs, artifacts, six-run comparison, and two model versions with the `champion` alias.
+MLflow tracking was configured against DagsHub and the executed run recorded the baseline and MobileNetV2 experiments. The retained screenshots show the tracking configuration, completed runs, and final training output. The notebook did not export independent model-registry version and alias evidence, so those items are not represented as completed.
 
 ## 4. Flask application
 
@@ -51,7 +53,7 @@ Each successful prediction stores UTC time, sanitized filename, decision, confid
 
 ## 6. Docker and Compose
 
-Explain dependency-layer caching, the slim CPU image, non-root execution, health checks, named volumes, service readiness, secret handling, image-size optimization, operations commands, and the intentional failure/fix. Include Docker warm-up and CI evidence.
+The Docker image installs the serving dependencies separately from training/MLflow tools. It uses a slim CPU base, runs as a non-root user, downloads the public champion model when it is absent from the build context, and exposes port 8000. Compose defines the web/database services, health checks, readiness dependency, and named volumes. The first Blitz build failed because TensorFlow and MLflow imposed incompatible protobuf requirements; separating the manifests fixed the build.
 
 ## 7. API deployment
 
