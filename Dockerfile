@@ -12,7 +12,12 @@ COPY app ./app
 COPY templates ./templates
 COPY static ./static
 COPY models ./models
-RUN mkdir -p data && chown -R appuser:appuser /app
+ARG MODEL_URL=https://huggingface.co/spaces/ghaurixd/visionguard-inference/resolve/main/models/champion.keras
+RUN if [ ! -f models/champion.keras ]; then \
+        python -c "from urllib.request import urlretrieve; urlretrieve('${MODEL_URL}', 'models/champion.keras')"; \
+    fi \
+    && mkdir -p data \
+    && chown -R appuser:appuser /app
 USER appuser
 
 EXPOSE 8000
