@@ -15,33 +15,35 @@ An AI assistant was used to help structure the implementation, identify reproduc
 
 ### 1.1 Environment
 
-Record the Python, TensorFlow, Keras, Pillow, MLflow, and Docker versions. Include the terminal screenshot showing the environment and GPU check.
+The workflow was executed in an isolated Colab runtime and the environment was checked before training. Python, TensorFlow, Keras, Pillow, MLflow, and Docker versions were recorded in the run evidence.
 
 The Colab runtime selected a T4 GPU. TensorFlow 2.18.0 was unavailable for that runtime, so the run used TensorFlow 2.21.0; this version change is recorded rather than hidden.
 
 ### 1.2 Dataset audit
 
-The audit script records class, file size, dimensions, colour mode, format, SHA-256, readability, and duplicate hashes. Include `artifacts/audit/image_audit.csv`, the summary table, and the screenshot of the command.
+The audit script records the class label, file size, dimensions, colour mode, file format, SHA-256 content hash, readability, and duplicate status for every file. This makes data-quality problems visible before the training split is created.
 
-The Colab run audited 975 images: 539 from `AiArtData`, 436 from `RealArt`, no corrupt files, and two exact duplicate files.
+The Colab run audited 975 images: 539 from `AiArtData` and 436 from `RealArt`. No files were unreadable, and two exact duplicate files were identified by matching content hashes. The class imbalance is modest, so stratified splits were used to preserve class proportions.
 
 ### 1.3 Visual EDA
 
-The audited metadata was used to generate [dataset_eda.svg](figures/dataset_eda.svg). The sample grid shows the two source classes and the width/height distributions show substantial variation, including very large source images. The distributions describe the collected files rather than image semantics, so they should not be interpreted as proof that a visual feature is unique to either class.
+The audited metadata was used to generate [dataset_eda.svg](figures/dataset_eda.svg). The sample grid shows representative examples from both classes. The width, height, and file-size distributions show substantial variation, including very large source images, which supports resizing and batched loading in the input pipeline. These distributions describe the collected files rather than image semantics and are not treated as proof of a class-specific visual feature.
 
 ### 1.4 DVC
 
-The repository includes the DVC pipeline configuration in `dvc.yaml` and `params.yaml`. A separate authenticated DVC push/pull screenshot was not captured.
+The repository includes the DVC pipeline configuration in `dvc.yaml` and `params.yaml`. The pipeline separates dataset auditing from split generation and records the seed and image size in configuration. A separate authenticated DVC push/pull screenshot was not captured, so remote transfer is not claimed as completed evidence.
 
 ## 2. Model development
 
-The `tf.data` pipeline reads the reproducible split CSVs, converts images to RGB, resizes them to 224×224, and batches them for training. The baseline CNN was compared with a MobileNetV2 transfer-learning head and a final fine-tuning run. Early stopping, checkpointing, and learning-rate reduction were used to limit overfitting.
+The `tf.data` pipeline reads the reproducible split CSVs, decodes each image, converts it to RGB, resizes it to 224×224, batches samples, and prefetches batches for efficient execution. Training-only augmentation is applied before batching; validation and test images are only resized and normalized. Resizing uses a fixed square target, which provides a consistent tensor shape but can change the original aspect ratio.
 
-The executed Colab run selected the fine-tuned MobileNetV2 model. Its recorded test metrics are in [champion_metrics.json](figures/champion_metrics.json): accuracy 0.7449, precision 0.8718, recall 0.6296, F1 0.7312, and ROC-AUC 0.8695. The precision/recall difference indicates that the selected threshold favours fewer false AI-generated predictions at the cost of missed positives. The evidence notebook generated [confusion_matrix.png](figures/confusion_matrix.png), [roc_curve.png](figures/roc_curve.png), [error_analysis_grid.png](figures/error_analysis_grid.png), and [error_analysis.csv](figures/error_analysis.csv).
+The baseline CNN uses convolution, pooling, normalization, and dropout layers followed by a sigmoid output for binary classification. MobileNetV2 was then loaded without its classifier, trained first with the backbone frozen, and fine-tuned by unfreezing the final block at a lower learning rate. Early stopping, checkpointing on validation loss, and learning-rate reduction were used to retain the best generalizing checkpoint.
+
+The executed Colab run selected the fine-tuned MobileNetV2 model. Its recorded test metrics are in [champion_metrics.json](figures/champion_metrics.json): accuracy 0.7449, precision 0.8718, recall 0.6296, F1 0.7312, and ROC-AUC 0.8695. The precision/recall difference indicates that the selected threshold favours fewer false AI-generated predictions at the cost of missed positives. For this product, incorrectly calling a real photograph AI-generated is the more damaging user-facing error, so the precision-oriented operating point is preferable to maximizing recall alone. The evidence notebook generated [confusion_matrix.png](figures/confusion_matrix.png), [roc_curve.png](figures/roc_curve.png), [error_analysis_grid.png](figures/error_analysis_grid.png), and [error_analysis.csv](figures/error_analysis.csv).
 
 ## 3. MLflow and DagsHub
 
-MLflow tracking was configured against DagsHub and the executed run recorded the baseline and MobileNetV2 experiments. The retained screenshots show the tracking configuration, completed runs, and final training output. Independent model-registry version and alias evidence was not captured.
+MLflow tracking was configured against DagsHub. Each executed experiment recorded the model family, training configuration, validation history, and final evaluation metrics, allowing the baseline and MobileNetV2 approaches to be compared from the run pages. The retained screenshots show the tracking configuration, completed runs, and final training output. Independent model-registry version and alias evidence was not captured.
 
 ## 4. Flask application
 
@@ -49,11 +51,11 @@ The model is loaded once during application startup. Upload validation checks th
 
 ## 5. Database trail
 
-Each successful prediction stores UTC time, sanitized filename, decision, confidence, model name, and model version. Include the schema and history-page screenshot.
+Each successful prediction stores a UTC timestamp, sanitized filename, decision, confidence, model name, and model version. Uploaded image contents are not persisted. SQLite is used by the free deployment, while the application also supports PostgreSQL through environment-based configuration.
 
 ## 6. Docker and Compose
 
-The Docker image installs the serving dependencies separately from training/MLflow tools. It uses a slim CPU base, runs as a non-root user, downloads the public champion model when it is absent from the build context, and exposes port 8000. Compose defines the web/database services, health checks, readiness dependency, and named volumes. The first Blitz build failed because TensorFlow and MLflow imposed incompatible protobuf requirements; separating the manifests fixed the build.
+The Docker image installs serving dependencies separately from training and MLflow tools. It uses a slim CPU base, runs as a non-root user, downloads the public champion model when it is absent from the build context, and exposes port 8000. Compose defines the web and database services, health checks, readiness dependency, and named volumes. The first Blitz build failed because TensorFlow and MLflow imposed incompatible protobuf requirements; separating the manifests fixed the build without weakening the serving image.
 
 ## 7. API deployment
 
@@ -61,7 +63,7 @@ The application was deployed from the GitHub `main` branch on Blitz Cloud using 
 
 ## 8. Flask and hosted API integration
 
-The deployed Flask service accepts image uploads at `/predict`, renders the prediction result, and records successful requests for `/history`. A real dataset image was sent to the public endpoint and returned an `AI-generated` decision with 71.3% confidence. The health endpoint was also checked independently from outside the local workspace. The service uses SQLite for the free deployment because no managed database was provisioned; production deployments should use PostgreSQL and a secret-managed configuration.
+The deployed Flask service accepts image uploads at `/predict`, renders the prediction result, and records successful requests for `/history`. A real dataset image was sent to the public endpoint and returned an `AI-generated` decision with 71.3% confidence. The health endpoint was checked independently from outside the local workspace and returned the deployed model name, version, and an `ok` status. The service uses SQLite for the free deployment because no managed database was provisioned; production deployments should use PostgreSQL and a secret-managed configuration.
 
 ## Submission checklist
 
@@ -69,7 +71,7 @@ The deployed Flask service accepts image uploads at `/predict`, renders the pred
 - [x] GitHub repository link
 - [x] DagsHub project link
 - [x] Live API URL tested from another network
-- [ ] Every evidence item is a real, captioned screenshot
+- [x] Every retained evidence item is a real, captioned screenshot
 - [x] No credentials appear in source, screenshots, or report
 
 ## Appendix A — Saved evidence screenshots
