@@ -107,6 +107,8 @@ Open [the Colab notebook](notebooks/visionguard_colab_training.ipynb) from GitHu
 
 Never place tokens in notebook cells, source files, screenshots, or commits.
 
+For the remaining evaluation evidence, open [the evidence notebook](notebooks/VisionGuard_Evidence_Colab.ipynb) in Colab and run every cell. It downloads the official dataset, loads the public champion model, creates the confusion matrix, ROC curve, error-analysis CSV/grid, and runs eight Keras Tuner trials. Download `visionguard-evidence.zip` from the final cell and place its figures in `reports/figures/`.
+
 ## Run the Flask application
 
 The production image installs only the serving dependencies from `requirements.txt`. Training, evaluation, and CI tools are listed separately in `requirements-training.txt`.
