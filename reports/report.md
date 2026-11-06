@@ -5,7 +5,7 @@
 **GitHub:** https://github.com/abdul-raheem-fast/23L-0588_A2_Ops  
 **DagsHub:** https://dagshub.com/abdul-raheem-fast/23L-0588_A2_Ops  
 **Live URL:** https://23l-0588-a2-ops.ghauri.prod.page
-**Graded commit:** `fbbb671`
+**Graded commit:** `bfbd52a`
 
 ## Disclosure
 
