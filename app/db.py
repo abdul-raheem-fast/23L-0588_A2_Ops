@@ -28,11 +28,12 @@ class HistoryStore:
         return connection
 
     def initialize(self):
+        id_definition = "SERIAL PRIMARY KEY" if self.is_postgres else "INTEGER PRIMARY KEY AUTOINCREMENT"
         with self.connect() as connection:
             connection.execute(
-                """
+                f"""
                 CREATE TABLE IF NOT EXISTS predictions (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id {id_definition},
                     created_at TEXT NOT NULL,
                     filename TEXT NOT NULL,
                     label TEXT NOT NULL,
@@ -46,22 +47,24 @@ class HistoryStore:
 
     def add_prediction(self, filename, label, confidence, model_name, model_version):
         created_at = datetime.now(timezone.utc).isoformat()
+        placeholder = "%s" if self.is_postgres else "?"
         with self.connect() as connection:
             connection.execute(
-                """
+                f"""
                 INSERT INTO predictions
                     (created_at, filename, label, confidence, model_name, model_version)
-                VALUES (?, ?, ?, ?, ?, ?)
+                VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder}, {placeholder}, {placeholder})
                 """,
                 (created_at, filename, label, confidence, model_name, model_version),
             )
 
     def recent(self, limit=50):
+        placeholder = "%s" if self.is_postgres else "?"
         with self.connect() as connection:
             return connection.execute(
-                """
+                f"""
                 SELECT created_at, filename, label, confidence, model_name, model_version
-                FROM predictions ORDER BY id DESC LIMIT ?
+                FROM predictions ORDER BY id DESC LIMIT {placeholder}
                 """,
                 (limit,),
             ).fetchall()

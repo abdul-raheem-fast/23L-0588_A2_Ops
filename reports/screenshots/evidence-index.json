@@ -69,6 +69,26 @@
       "file": "25_blitz_public_ui.png",
       "subtasks": ["7.2", "8.1"],
       "description": "Public Blitz URL displaying the VisionGuard upload interface."
+    },
+    {
+      "file": "26_compose_local_ui.png",
+      "subtasks": ["4.2", "4.3", "6.3"],
+      "description": "Local Docker Compose VisionGuard upload interface with Classify, History, and Health navigation."
+    },
+    {
+      "file": "27_compose_prediction_result.png",
+      "subtasks": ["4.1", "4.2", "8.1"],
+      "description": "Local Compose prediction result showing the returned label, confidence, and model caveat."
+    },
+    {
+      "file": "28_compose_history.png",
+      "subtasks": ["5", "8.1"],
+      "description": "Local Compose history page showing a stored prediction, timestamp, decision, confidence, model, and version."
+    },
+    {
+      "file": "29_compose_health.png",
+      "subtasks": ["4.4", "6.3"],
+      "description": "Local Compose health response showing the deployed model name, version, and ok status."
     }
   ]
 }

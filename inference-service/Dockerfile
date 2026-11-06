@@ -15,4 +15,3 @@ USER appuser
 
 EXPOSE 7860
 CMD ["gunicorn", "--bind", "0.0.0.0:7860", "--workers", "1", "app:app"]
-

@@ -55,7 +55,9 @@ Each successful prediction stores a UTC timestamp, sanitized filename, decision,
 
 ## 6. Docker and Compose
 
-The Docker image installs serving dependencies separately from training and MLflow tools. It uses a slim CPU base, runs as a non-root user, downloads the public champion model when it is absent from the build context, and exposes port 8000. Compose defines the web and database services, health checks, readiness dependency, and named volumes. The first Blitz build failed because TensorFlow and MLflow imposed incompatible protobuf requirements; separating the manifests fixed the build without weakening the serving image.
+The Docker image installs serving dependencies separately from training and MLflow tools. It uses a slim CPU base, runs as a non-root user, downloads the public champion model when it is absent from the build context, and exposes port 8000. Compose defines the web and database services, health checks, readiness dependency, and named volumes. The local Compose run reached healthy status for both services, and the web health endpoint returned the expected model and version response. The production image includes the PostgreSQL driver required by the Compose database configuration.
+
+The first local build exposed two compatibility issues: the installed Gunicorn version did not support the `--factory` flag, and the database layer used SQLite parameter placeholders with PostgreSQL. The command was changed to Gunicorn's callable-factory syntax, the PostgreSQL driver was added to the serving requirements, and database schema and query placeholders were made backend-aware. The corrected stack then started successfully.
 
 ## 7. API deployment
 
