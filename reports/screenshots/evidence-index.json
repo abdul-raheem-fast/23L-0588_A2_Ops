@@ -119,6 +119,11 @@
       "file": "live-validation/04_predict_response.html",
       "subtasks": ["7", "8"],
       "description": "Equivalent live multipart API evidence: curl POST to /predict returned HTTP 200 and a real prediction response. A native Postman screenshot was not captured."
+    },
+    {
+      "file": "35_postman_predict_response.png",
+      "subtasks": ["7", "8"],
+      "description": "User-provided native Postman screenshot showing the live POST /predict request, image form-data field, and HTTP 200 response."
     }
     }
   ]
