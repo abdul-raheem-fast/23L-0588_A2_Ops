@@ -59,6 +59,10 @@ The Docker image installs serving dependencies separately from training and MLfl
 
 The first local build exposed two compatibility issues: the installed Gunicorn version did not support the `--factory` flag, and the database layer used SQLite parameter placeholders with PostgreSQL. The command was changed to Gunicorn's callable-factory syntax, the PostgreSQL driver was added to the serving requirements, and database schema and query placeholders were made backend-aware. The corrected stack then started successfully.
 
+The Docker warm-up used the official Nginx image with a detached container named `web1`, port mapping `18080:80`, container logs, an interactive shell, and a directory listing from `/usr/share/nginx/html`. A host-folder volume mount was also tested. The Nginx welcome page is retained under the Docker warm-up evidence folder. Compose output records both services as healthy, and `docker port visionguard-database-1` produced no output because PostgreSQL is intentionally not published to the host.
+
+The saved Docker operations evidence also includes `docker images`, `docker history visionguard-web`, service logs, and a real PostgreSQL password-mismatch failure followed by a corrected healthy restart. The largest image layer is the TensorFlow dependency installation; the Dockerfile already uses `--no-cache-dir`, a slim Python base, and `.dockerignore`.
+
 ## 7. API deployment
 
 The application was deployed from the GitHub `main` branch on Blitz Cloud using the repository Dockerfile. The deployment uses the public address `https://23l-0588-a2-ops.ghauri.prod.page`. The build initially failed because the training manifest combined TensorFlow 2.21.0 with MLflow 2.19.0, which require incompatible protobuf ranges. The production and training dependencies were separated, the updated image built successfully, and the public `/health` endpoint returned the deployed model name, version, and `ok` status. The free service may sleep when idle; no paid cloud credits were used.

@@ -89,6 +89,12 @@
       "file": "29_compose_health.png",
       "subtasks": ["4.4", "6.3"],
       "description": "Local Compose health response showing the deployed model name, version, and ok status."
+    },
+    {
+      "file": "docker-warmup/13_nginx_welcome.png",
+      "subtasks": ["6.1"],
+      "description": "Nginx welcome page on localhost:18080 proving the warm-up container was running and port-mapped."
+    }
     }
   ]
 }
