@@ -134,6 +134,26 @@
       "file": "40_mlflow_model_versions_alias.png",
       "subtasks": ["3.6"],
       "description": "DagsHub MLflow model detail page showing Versions 1 and 2, with champion assigned to Version 2."
+    },
+    {
+      "file": "09_invalid_wrong_type.png",
+      "subtasks": ["4.2"],
+      "description": "Local VisionGuard validation response for a non-image upload."
+    },
+    {
+      "file": "12_invalid_corrupt_image.png",
+      "subtasks": ["4.2"],
+      "description": "Local VisionGuard validation response for a corrupt image file."
+    },
+    {
+      "file": "33b_live_more_predictions.png",
+      "subtasks": ["5", "8"],
+      "description": "Local VisionGuard history page showing three additional stored prediction records."
+    },
+    {
+      "file": "32_postman_predict.png",
+      "subtasks": ["7", "8"],
+      "description": "Native Postman screenshot showing the live multipart prediction request and HTTP 200 response."
     }
   ]
 }
