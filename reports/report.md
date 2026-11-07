@@ -71,6 +71,8 @@ The application was deployed from the GitHub `main` branch on Blitz Cloud using 
 
 The deployed Flask service accepts image uploads at `/predict`, renders the prediction result, and records successful requests for `/history`. A real dataset image was sent to the public endpoint and returned an `AI-generated` decision with 71.3% confidence. The health endpoint was checked independently from outside the local workspace and returned the deployed model name, version, and an `ok` status. The service uses SQLite for the free deployment because no managed database was provisioned; production deployments should use PostgreSQL and a secret-managed configuration.
 
+A second live multipart request was executed against `/predict` after the service woke from its free-tier sleep state. The request returned HTTP 200 and classified `confusion_matrix.png` as Real with 84.0% confidence. The raw headers and HTML response are retained in `reports/screenshots/live-validation/`; a native Postman screenshot was not captured.
+
 ## Submission checklist
 
 - [x] PDF renamed to `23L-0588_VisionGuard.pdf`

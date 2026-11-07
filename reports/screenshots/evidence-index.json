@@ -114,6 +114,11 @@
       "file": "34_live_history.png",
       "subtasks": ["5", "8"],
       "description": "Live public history page showing stored prediction records, decisions, confidence, model, and version."
+    },
+    {
+      "file": "live-validation/04_predict_response.html",
+      "subtasks": ["7", "8"],
+      "description": "Equivalent live multipart API evidence: curl POST to /predict returned HTTP 200 and a real prediction response. A native Postman screenshot was not captured."
     }
     }
   ]
