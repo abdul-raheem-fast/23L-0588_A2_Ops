@@ -151,6 +151,11 @@
       "description": "Docker image size and history output for the built VisionGuard image."
     },
     {
+      "file": "31_github_ci_green.png",
+      "subtasks": ["6.6"],
+      "description": "GitHub Actions VisionGuard CI run #45 completed successfully after the dependency and package-discovery fixes."
+    },
+    {
       "file": "09_invalid_wrong_type.png",
       "subtasks": ["4.2"],
       "description": "Local VisionGuard validation response for a non-image upload."

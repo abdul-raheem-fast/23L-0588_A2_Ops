@@ -88,7 +88,7 @@ The following appendix embeds every retained screenshot from `reports/screenshot
 
 - `01_colab_runtime_t4.png` — Colab runtime configuration with a T4 GPU selected.
 - `02_colab_secrets_panel.png` — Colab Secrets setup panel for DagsHub credentials.
-- `10_github_ci_failed.png` — Intentional red GitHub Actions run retained for CI lab evidence.
+- `31_github_ci_green.png` — GitHub Actions VisionGuard CI run #45 completed successfully after the CI dependency and package-discovery fixes.
 - `15_colab_environment_gpu.png` — Colab environment output showing TensorFlow and GPU detection.
 - `16_dataset_download_counts.png` — Official dataset download path and class file counts.
 - `17_dataset_audit_splits.png` — Audit count and reproducible train/validation/test split creation.
