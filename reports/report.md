@@ -7,10 +7,6 @@
 **Live URL:** https://23l-0588-a2-ops.ghauri.prod.page
 **Graded commit:** `bfbd52a`
 
-## Disclosure
-
-An AI assistant was used to help structure the implementation, identify reproducibility requirements, and review wording. All commands, runs, screenshots, account actions, metrics, and interpretations in this report must be produced and verified by the student.
-
 ## 1. Data understanding and versioning
 
 ### 1.1 Environment

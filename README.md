@@ -180,4 +180,4 @@ Raw images, model binaries, ZIP archives, `.env`, tokens, and generated local da
 
 ## Report
 
-The report source is [reports/report.md](reports/report.md). Selected evidence screenshots are indexed in [reports/screenshots/evidence-index.json](reports/screenshots/evidence-index.json). Add any remaining rubric figures and screenshots before exporting `23L-0588_VisionGuard.pdf`.
+The report source is [reports/report.md](reports/report.md). The final PDF is [reports/23L-0588_VisionGuard.pdf](reports/23L-0588_VisionGuard.pdf), and the retained evidence screenshots are indexed in [reports/screenshots/evidence-index.json](reports/screenshots/evidence-index.json).
