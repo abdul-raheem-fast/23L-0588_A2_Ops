@@ -31,7 +31,7 @@ The audited metadata was used to generate [dataset_eda.svg](figures/dataset_eda.
 
 ### 1.4 DVC
 
-The repository includes the DVC pipeline configuration in `dvc.yaml` and `params.yaml`. The pipeline separates dataset auditing from split generation and records the seed and image size in configuration. A separate authenticated DVC push/pull screenshot was not captured, so remote transfer is not claimed as completed evidence.
+The repository includes the DVC pipeline configuration in `dvc.yaml` and `params.yaml`. The pipeline separates dataset auditing from split generation and records the seed and image size in configuration. The dataset and generated audit/split artifacts were pushed to the configured DagsHub DVC remote, removed locally, and restored with `dvc pull -f`. The terminal evidence shows five files pushed, six files restored, 975 dataset images restored, and the audit and split files present afterward.
 
 ## 2. Model development
 

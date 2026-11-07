@@ -156,6 +156,21 @@
       "description": "GitHub Actions VisionGuard CI run #45 completed successfully after the dependency and package-discovery fixes."
     },
     {
+      "file": "05_dvc_dataset_push.png",
+      "subtasks": ["1.4"],
+      "description": "DVC push output showing five files pushed to the configured DagsHub remote."
+    },
+    {
+      "file": "05_dvc_dataset_pull_restore.png",
+      "subtasks": ["1.4"],
+      "description": "DVC pull restore output showing data and generated audit/split artifacts restored, followed by a 975-file data count."
+    },
+    {
+      "file": "05_dvc_artifacts_restore.png",
+      "subtasks": ["1.4"],
+      "description": "Directory listing confirming restored audit summary, image audit CSV, and train/validation/test split files."
+    },
+    {
       "file": "09_invalid_wrong_type.png",
       "subtasks": ["4.2"],
       "description": "Local VisionGuard validation response for a non-image upload."
