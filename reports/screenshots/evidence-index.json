@@ -126,10 +126,14 @@
       "description": "User-provided native Postman screenshot showing the live POST /predict request, image form-data field, and HTTP 200 response."
     },
     {
-      "file": "38_mlflow_registry_empty.png",
+      "file": "39_mlflow_registry_champion.png",
       "subtasks": ["3.6"],
-      "description": "DagsHub MLflow Models page showing that no registered models currently exist."
-    }
+      "description": "DagsHub MLflow Registered Models page showing visionguard-model with champion assigned to Version 2."
+    },
+    {
+      "file": "40_mlflow_model_versions_alias.png",
+      "subtasks": ["3.6"],
+      "description": "DagsHub MLflow model detail page showing Versions 1 and 2, with champion assigned to Version 2."
     }
   ]
 }

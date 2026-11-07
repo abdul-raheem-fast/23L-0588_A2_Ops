@@ -43,7 +43,7 @@ The executed Colab run selected the fine-tuned MobileNetV2 model. Its recorded t
 
 ## 3. MLflow and DagsHub
 
-MLflow tracking was configured against DagsHub. Each executed experiment recorded the model family, training configuration, validation history, and final evaluation metrics, allowing the baseline and MobileNetV2 approaches to be compared from the run pages. The retained screenshots show the tracking configuration, completed runs, and final training output. Independent model-registry version and alias evidence was not captured.
+MLflow tracking was configured against DagsHub. Each executed experiment recorded the model family, training configuration, validation history, and final evaluation metrics, allowing the baseline and MobileNetV2 approaches to be compared from the run pages. The registered model `visionguard-model` contains Versions 1 and 2, and the `champion` alias points to Version 2. The registry evidence is retained in `39_mlflow_registry_champion.png` and `40_mlflow_model_versions_alias.png`.
 
 ## 4. Flask application
 
