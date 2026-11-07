@@ -141,6 +141,16 @@
       "description": "Dataset audit and sample EDA figure showing class counts, duplicate count, sample images, and dimension distributions."
     },
     {
+      "file": "13b_volume_mount_page.png",
+      "subtasks": ["6.1"],
+      "description": "Nginx page served from a read-only host-folder volume mount."
+    },
+    {
+      "file": "14_docker_image_after.png",
+      "subtasks": ["6.4"],
+      "description": "Docker image size and history output for the built VisionGuard image."
+    },
+    {
       "file": "09_invalid_wrong_type.png",
       "subtasks": ["4.2"],
       "description": "Local VisionGuard validation response for a non-image upload."
