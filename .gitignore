@@ -14,3 +14,4 @@ models/*.h5
 inference-service/models/*.keras
 *.log
 *.zip
+/data
