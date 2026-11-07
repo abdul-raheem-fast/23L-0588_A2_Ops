@@ -136,6 +136,11 @@
       "description": "DagsHub MLflow model detail page showing Versions 1 and 2, with champion assigned to Version 2."
     },
     {
+      "file": "03_eda_figure.png",
+      "subtasks": ["1.2"],
+      "description": "Dataset audit and sample EDA figure showing class counts, duplicate count, sample images, and dimension distributions."
+    },
+    {
       "file": "09_invalid_wrong_type.png",
       "subtasks": ["4.2"],
       "description": "Local VisionGuard validation response for a non-image upload."
