@@ -94,6 +94,26 @@
       "file": "docker-warmup/13_nginx_welcome.png",
       "subtasks": ["6.1"],
       "description": "Nginx welcome page on localhost:18080 proving the warm-up container was running and port-mapped."
+    },
+    {
+      "file": "31_live_public_ui_awake.png",
+      "subtasks": ["4.2", "4.3", "7.2"],
+      "description": "Live Blitz deployment awake and displaying the public VisionGuard upload interface."
+    },
+    {
+      "file": "32_live_health_awake.png",
+      "subtasks": ["4.4", "7.2"],
+      "description": "Live public health response showing the champion model, version 1, and ok status."
+    },
+    {
+      "file": "33_live_prediction.png",
+      "subtasks": ["4.1", "4.2", "7", "8"],
+      "description": "Live public prediction result from a real multipart upload showing label, confidence, and caveat."
+    },
+    {
+      "file": "34_live_history.png",
+      "subtasks": ["5", "8"],
+      "description": "Live public history page showing stored prediction records, decisions, confidence, model, and version."
     }
     }
   ]
