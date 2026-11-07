@@ -1,0 +1,50 @@
+schema: '2.0'
+stages:
+  audit:
+    cmd: python scripts/audit_dataset.py --dataset-dir data/raw --output-dir 
+      artifacts/audit
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: b2cec67839f742df4653f66d4bcbbafb.dir
+      size: 503783378
+      nfiles: 975
+    - path: scripts/audit_dataset.py
+      hash: md5
+      md5: cb71416799eec0318e1d204ef14e158d
+      size: 2778
+    outs:
+    - path: artifacts/audit/image_audit.csv
+      hash: md5
+      md5: 119a0e6cace73172b46b4b0d10e0f312
+      size: 166370
+    - path: artifacts/audit/summary.json
+      hash: md5
+      md5: b9ee0d027154d8b20d1e2a71dd555c60
+      size: 431
+  splits:
+    cmd: python scripts/make_splits.py --dataset-dir data/raw --output-dir 
+      artifacts/splits --seed 23
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: b2cec67839f742df4653f66d4bcbbafb.dir
+      size: 503783378
+      nfiles: 975
+    - path: scripts/make_splits.py
+      hash: md5
+      md5: 79f5c69b43ac621ee7d8cde0bac846f8
+      size: 2185
+    outs:
+    - path: artifacts/splits/test.csv
+      hash: md5
+      md5: f6b3f6f73ad1ea9e0df7e3d8cf69ef2a
+      size: 10838
+    - path: artifacts/splits/train.csv
+      hash: md5
+      md5: 279d5bb985757b5dabb76de7498db696
+      size: 85603
+    - path: artifacts/splits/validation.csv
+      hash: md5
+      md5: 4fd13e3992d665ce6fd4097b4109a706
+      size: 10830

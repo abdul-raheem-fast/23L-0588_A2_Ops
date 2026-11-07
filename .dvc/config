@@ -1,0 +1,4 @@
+[core]
+    remote = dagshub
+[remote "dagshub"]
+    url = https://dagshub.com/abdul-raheem-fast/23L-0588_A2_Ops.dvc
