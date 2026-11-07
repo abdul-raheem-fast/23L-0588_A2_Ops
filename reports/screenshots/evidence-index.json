@@ -124,6 +124,11 @@
       "file": "35_postman_predict_response.png",
       "subtasks": ["7", "8"],
       "description": "User-provided native Postman screenshot showing the live POST /predict request, image form-data field, and HTTP 200 response."
+    },
+    {
+      "file": "38_mlflow_registry_empty.png",
+      "subtasks": ["3.6"],
+      "description": "DagsHub MLflow Models page showing that no registered models currently exist."
     }
     }
   ]
